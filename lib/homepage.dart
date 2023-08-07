@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage(this.startQuiz, {super.key});
+
+  final void Function() startQuiz;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,16 @@ class HomePage extends StatelessWidget {
           Image.asset(
             "assets/images/quiz-logo.png",
             width: 275,
+            color: const Color.fromARGB(150, 255, 255, 255),
           ),
+
+          // Opacity(
+          //   opacity: 0.6,
+          //   child: Image.asset(
+          //     "assets/images/quiz-logo.png",
+          //     width: 275,
+          //   ),
+          // ),
           const SizedBox(
             height: 30,
           ),
@@ -24,17 +35,18 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          OutlinedButton(
-            onPressed: () {},
+          OutlinedButton.icon(
+            onPressed: startQuiz,
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
+                    topLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30)),
               ),
             ),
-            child: const Text('Start Quiz'),
+            icon: const Icon(Icons.arrow_right_alt),
+            label: const Text('Start Quiz'),
           )
         ],
       ),
